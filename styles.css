@@ -1,9 +1,4 @@
-body,
-h1,
-h2,
-h3,
-p,
-ul {
+body, h1, h2, h3, p, ul {
   margin: 0;
   padding: 0;
 }
@@ -11,71 +6,64 @@ ul {
 body {
   font-family: "Courier New", Courier, monospace, sans-serif;
   background-image: url("https://images5.alphacoders.com/130/1302017.png");
-  background-size: auto;
+  background-size: cover; /* Use cover to ensure the background covers the entire viewport */
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
+  margin: 0;
 }
 
 header {
   background-color: #333;
-  font-family: "Courier New", Courier, monospace, sans-serif;
   color: rgb(244, 252, 5);
   padding: 15px 0;
-  position: static;
-  
-}
-
-h1
-{
   text-align: center;
 }
 
-form
-{
-  width:50%;
+h1 {
+  text-align: center;
+}
+
+form {
+  width: 80%; /* Adjust the width as per your design */
   margin: 0 auto;
   padding: 20px;
-  border:1px solid #333;
-  border-radius:5px;
-}
-
-label
-{
-  font-weight:bold;
-}
-
-input[type=text], input[type="email"],select,textarea
-{
-  width:100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border:1px solid #ccc;
-  border-radius:5px;
-  margin-bottom:10px;
+  border: 1px solid #333;
+  border-radius: 5px;
   box-sizing: border-box;
 }
 
-input[type="checkbox"]
-{
+label {
+  font-weight: bold;
+}
+
+input[type=text], input[type="email"], select, textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+input[type="checkbox"] {
   margin: 0 10px 0 0;
 }
 
-input[type=submit]
-{
-  width:100%;
+input[type=submit] {
+  width: 100%;
   background-color: #333;
   color: rgb(244, 252, 5);
-  padding: 14px 20px;
+  padding: 14px;
   margin: 8px 0;
   border: none;
-  border-radius:5px;
+  border-radius: 5px;
   cursor: pointer;
+  box-sizing: border-box;
 }
 
-input[type=submit]:hover
-{
+input[type=submit]:hover {
   background-color: rgb(244, 252, 5);
   color: #333;
 }
@@ -95,7 +83,6 @@ input[type=submit]:hover
 .main-content p {
   font-size: 16px;
   color: #333;
-  ;
 }
 
 nav ul {
@@ -104,7 +91,7 @@ nav ul {
 }
 
 nav ul li {
-  display: inline-table;
+  display: inline;
   font-family: "Courier New", Courier, monospace, sans-serif;
   font-size: 20px;
   margin: 0 20px;
@@ -123,9 +110,7 @@ nav ul li a {
 }
 
 .center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   width: 50%;
 }
 
