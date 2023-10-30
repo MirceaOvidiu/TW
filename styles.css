@@ -23,6 +23,61 @@ header {
   color: rgb(244, 252, 5);
   padding: 15px 0;
   position: static;
+  
+}
+
+h1
+{
+  text-align: center;
+}
+
+form
+{
+  width:50%;
+  margin: 0 auto;
+  padding: 20px;
+  border:1px solid #333;
+  border-radius:5px;
+}
+
+label
+{
+  font-weight:bold;
+}
+
+input[type=text], input[type="email"],select,textarea
+{
+  width:100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border:1px solid #ccc;
+  border-radius:5px;
+  margin-bottom:10px;
+  box-sizing: border-box;
+}
+
+input[type="checkbox"]
+{
+  margin: 0 10px 0 0;
+}
+
+input[type=submit]
+{
+  width:100%;
+  background-color: #333;
+  color: rgb(244, 252, 5);
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius:5px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover
+{
+  background-color: rgb(244, 252, 5);
+  color: #333;
 }
 
 .main-content {
