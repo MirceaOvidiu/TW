@@ -1,4 +1,9 @@
-body, h1, h2, h3, p, ul {
+body,
+h1,
+h2,
+h3,
+p,
+ul {
   margin: 0;
   padding: 0;
 }
@@ -6,7 +11,7 @@ body, h1, h2, h3, p, ul {
 body {
   font-family: "Courier New", Courier, monospace, sans-serif;
   background-image: url("https://images5.alphacoders.com/130/1302017.png");
-  background-size: cover; /* Use cover to ensure the background covers the entire viewport */
+  background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -16,8 +21,24 @@ body {
 header {
   background-color: #333;
   color: rgb(244, 252, 5);
+  overflow: hidden;
   padding: 15px 0;
   text-align: center;
+}
+
+header nav ul li a {
+  float: left;
+  display: block;
+  color: rgb(244, 252, 5);
+  ;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+header nav ul li a:hover {
+  background-color: rgb(174, 180, 0);
+  color: black;
 }
 
 h1 {
@@ -25,7 +46,7 @@ h1 {
 }
 
 form {
-  width: 80%; /* Adjust the width as per your design */
+  width: 80%;
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #333;
@@ -37,7 +58,10 @@ label {
   font-weight: bold;
 }
 
-input[type=text], input[type="email"], select, textarea {
+input[type=text],
+input[type="email"],
+select,
+textarea {
   width: 100%;
   padding: 12px;
   margin: 8px 0;
@@ -112,6 +136,69 @@ nav ul li a {
 .center {
   margin: 0 auto;
   width: 50%;
+}
+
+/* mobile */
+@media (max-width: 600px) {
+  header nav ul {
+    flex-direction: column;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  form {
+    width: 100%;
+    padding: 10px;
+  }
+
+  input[type=text],
+  input[type="email"],
+  select,
+  textarea,
+  header {
+    padding: 8px;
+  }
+}
+
+/* tablet*/
+@media (min-width: 601px) and (max-width: 1024px) {
+  header nav ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+
+  header nav ul li:nth-child(n+4) {
+    grid-column: 2;
+  }
+
+  form {
+    width: 90%;
+    padding: 15px;
+  }
+}
+
+/* desktop*/
+@media (min-width: 1025px) {
+  form {
+    width: 80%;
+    padding: 20px;
+  }
+
+  head nav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+  }
+
+  input[type=text],
+  input[type="email"],
+  select,
+  textarea {
+    padding: 12px;
+  }
 }
 
 footer {
