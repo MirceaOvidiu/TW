@@ -58,6 +58,16 @@ label {
   font-weight: bold;
 }
 
+.nav-menu ul {
+  display: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.nav-menu li:hover > ul {
+  display: block;
+}
+
 input[type=text],
 input[type="email"],
 select,
@@ -186,7 +196,7 @@ nav ul li a {
     padding: 20px;
   }
 
-  head nav ul {
+  header nav ul {
     display: flex;
     justify-content: center;
     list-style-type: none;
@@ -199,6 +209,20 @@ nav ul li a {
   textarea {
     padding: 12px;
   }
+}
+
+.go-back-btn {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.go-back-btn:hover {
+  background-color: #555;
 }
 
 footer {

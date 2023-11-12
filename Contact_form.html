@@ -5,11 +5,14 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="styles.css">
+        <script src="script.js"></script>
         <title>Contact Form</title>
     </head>
 
     <body>
         <h1>Contact Form</h1>
+        <button onclick="goBack()" class="go-back-btn">Go Back</button>
+        <script src="script.js"></script>
         <!--actual BE implementation might be added in the future-->
         <form action="/submit_form.php" method="post">
             <!-- text input -->
@@ -23,8 +26,8 @@
             <!-- dropdown menu -->
             <label for="country">Country:</label>
             <select id="country" name="country" required>
+                <option value="Romania">Romania</option>
                 <option value="usa">United States</option>
-                <option value="canada">Romania</option>
                 <option value="uk">United Kingdom</option>
             </select><br><br>
 
