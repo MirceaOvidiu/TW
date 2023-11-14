@@ -4,6 +4,7 @@ function goBack() {
 
 var mybutton = document.getElementById("myBtn");
 
+//will implement if information is added to the page and the user needs to scroll down to see it
 // when the user scrolls down 20px from the top of the document, show the button
 window.onscroll = function() {scrollFunction()};
 

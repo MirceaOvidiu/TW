@@ -13,6 +13,7 @@
         <h1>Contact Form</h1>
         <button onclick="goBack()" class="go-back-btn">Go Back</button>
         <script src="script.js"></script>
+        <style src="styles.css"></style>
         <!--actual BE implementation might be added in the future-->
         <form action="/submit_form.php" method="post">
             <!-- text input -->
@@ -38,8 +39,8 @@
             <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
 
             <a
-                href="mailto:receiver@example.com?subject=Subject_default&body=msg">Send
-                email</a><br><br>
+                href="mailto:receiver@example.com?subject=Subject_default&body=msg"
+                class="email-link">Send email</a><br><br>
 
             <!-- checkbox -->
             <input type="checkbox" id="subscribe" name="subscribe">
