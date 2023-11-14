@@ -10,7 +10,7 @@ ul {
 
 body {
   font-family: "Courier New", Courier, monospace, sans-serif;
-  background-image: url("https://images5.alphacoders.com/130/1302017.png");
+  background-image: url('wallpaperflare.com_wallpaper.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -19,33 +19,38 @@ body {
 }
 
 header {
-  background-color: #333;
-  color: rgb(244, 252, 5);
+  background-color: transparent;
+  color: rgb(255, 255, 255);
   overflow: hidden;
   padding: 15px 0;
   text-align: center;
 }
 
+/*nav bar elements*/
 header nav ul li a {
-  float: left;
+  float: center;
   display: block;
-  color: rgb(244, 252, 5);
-  ;
+  color: rgb(255, 255, 255);
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
 }
 
+/*nav bar elements, behavior on hover*/
 header nav ul li a:hover {
-  background-color: rgb(174, 180, 0);
+  background-color: rgb(255, 255, 255);
   color: black;
+  font-weight: bold;
+  
 }
 
 h1 {
   text-align: center;
+  color: #fff;
 }
 
 form {
+  color:#ffffff;
   width: 80%;
   margin: 0 auto;
   padding: 20px;
@@ -76,19 +81,20 @@ textarea {
   padding: 12px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
   border-radius: 5px;
   box-sizing: border-box;
 }
 
 input[type="checkbox"] {
   margin: 0 10px 0 0;
+  color:aliceblue;
 }
 
 input[type=submit] {
   width: 100%;
   background-color: #333;
-  color: rgb(244, 252, 5);
+  color: rgb(255, 255, 255);
   padding: 14px;
   margin: 8px 0;
   border: none;
@@ -98,8 +104,8 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-  background-color: rgb(244, 252, 5);
-  color: #333;
+  background-color: rgb(255, 255, 255);
+  color: #ffffff;
 }
 
 .main-content {
@@ -111,12 +117,12 @@ input[type=submit]:hover {
 
 .main-content h1 {
   font-size: 26px;
-  color: #333;
+  color: #ffffff;
 }
 
 .main-content p {
   font-size: 16px;
-  color: #333;
+  color: #ffffff;
 }
 
 nav ul {
@@ -226,8 +232,8 @@ nav ul li a {
 }
 
 footer {
-  background-color: #333;
-  color: rgb(244, 252, 5);
+  background-color:transparent;
+  color: rgb(255, 255, 255);
   text-align: center;
   font-size: 12px;
   padding: 5px 0;
