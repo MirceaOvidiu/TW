@@ -116,7 +116,7 @@ ul {
 
 .textbox {
   width: 80%;
-  background-color: #007B9A;
+  background-color:rgb(23, 23, 110);
   margin: 0 auto;
   padding: 20px;
   border: 2px solid white;
@@ -154,9 +154,10 @@ header nav ul li a {
 
 /*nav bar elements, behavior on hover*/
 header nav ul li a:hover {
-  background-color: whitesmoke;
-  color: lightblue;
+  background-color: lightcyan;
+  color: rgb(111, 206, 238);
   font-weight: bold;
+  border-radius: 10px;
 
 }
 
