@@ -1,0 +1,286 @@
+body,
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/*media queries*/
+/* mobile */
+@media (max-width: 600px) {
+  header nav ul {
+    flex-direction: column;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  form {
+    width: 100%;
+    padding: 10px;
+  }
+
+  input[type=text],
+  input[type="email"],
+  select,
+  textarea,
+  header {
+    padding: 8px;
+  }
+}
+
+/* tablet*/
+@media (min-width: 601px) and (max-width: 1024px) {
+  header nav ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+
+  header nav ul li:nth-child(n+4) {
+    grid-column: 2;
+  }
+
+  form {
+    width: 90%;
+    padding: 15px;
+  }
+}
+
+/* desktop*/
+@media (min-width: 1025px) {
+  form {
+    width: 80%;
+    padding: 20px;
+  }
+
+  header nav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+  }
+
+  input[type=text],
+  input[type="email"],
+  select,
+  textarea {
+    padding: 12px;
+  }
+}
+
+/*button styiling*/
+.go-back-btn {
+  padding: 10px 20px;
+  background-color: #008CBA;
+  color: white;
+  border: black;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 0 20px whitesmoke;
+  margin: 10px;
+}
+
+.go-back-btn:hover {
+  background-color: #00559a;
+}
+
+.email-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #008CBA;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.email-link:hover {
+  background-color: #007B9A;
+}
+
+/*for text display elements in the defence/offence/tools pagers*/
+.container {
+  width: 80%;
+  margin: 0 auto;
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+  border-color: white;
+}
+
+.textbox {
+  width: 80%;
+  background-color:rgb(23, 23, 110);
+  margin: 0 auto;
+  padding: 20px;
+  border: 2px solid white;
+  box-shadow: 0 0 20px whitesmoke;
+}
+
+body {
+  font-family: "Courier New", Courier, monospace, sans-serif;
+  background-image: url('wallpaperflare.com_wallpaper.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  margin: 0;
+}
+
+/*header, comes as a nav bar*/
+header {
+  background-color: transparent;
+  color: rgb(255, 255, 255);
+  overflow: hidden;
+  padding: 15px 0;
+  text-align: center;
+}
+
+/*nav bar elements*/
+header nav ul li a {
+  float: center;
+  display: block;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/*nav bar elements, behavior on hover*/
+header nav ul li a:hover {
+  background-color: lightcyan;
+  color: rgb(111, 206, 238);
+  font-weight: bold;
+  border-radius: 10px;
+
+}
+
+h1 {
+  text-align: center;
+  color: #fff;
+  margin-top: 2%;
+}
+
+/*contact page styling*/
+form {
+  color: #ffffff;
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  box-sizing: border-box;
+  box-shadow: 0 0 20px whitesmoke;
+}
+
+label {
+  font-weight: bold;
+}
+
+.nav-menu ul {
+  display: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.nav-menu li:hover>ul {
+  display: block;
+}
+
+input[type=text],
+input[type="email"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+input[type="checkbox"] {
+  margin: 0 10px 0 0;
+  color: aliceblue;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #333;
+  color: rgb(255, 255, 255);
+  padding: 14px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+input[type=submit]:hover {
+  background-color: rgb(255, 255, 255);
+  color: #ffffff;
+}
+
+.main-content {
+  text-align: center;
+  padding: 20px;
+  border-radius: 5px;
+  margin: 20px;
+}
+
+.main-content h1 {
+  font-size: 26px;
+  color: #ffffff;
+}
+
+.main-content p {
+  font-size: 16px;
+  color: #ffffff;
+}
+
+nav ul {
+  list-style: none;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline;
+  font-family: "Courier New", Courier, monospace, sans-serif;
+  font-size: 20px;
+  margin: 0 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: rgb(244, 252, 5);
+}
+
+.main-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.center {
+  margin: 0 auto;
+  width: 50%;
+}
+
+footer {
+  background-color: transparent;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-size: 12px;
+  padding: 5px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
