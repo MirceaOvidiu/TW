@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const modifiedImageBox = document.getElementById('modifiedImageBox');
     const processingTime = document.getElementById('processingTime');
     const timeValue = document.getElementById('timeValue');
+    const randomDogButton = document.getElementById('random-dog-button');
 
     submitBtn.addEventListener('click', function () {
         // Reset the displayed processing time to 0
@@ -15,6 +16,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const brightnessValue = brightnessSlider.value;
         processImage(brightnessValue);
+    });
+
+    randomDogButton.addEventListener('click', async function () {
+        await displayRandomDog();
     });
 
     uploadInput.addEventListener('change', handleFileSelect);
@@ -28,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
             reader.onload = function (e) {
                 originalImage.src = e.target.result;
                 originalImageBox.style.display = 'block';
+                modifiedImageBox.style.display = 'none'; // Hide modified image box when a new image is uploaded
             };
 
             reader.readAsDataURL(file);
@@ -36,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     async function processImage(brightness) {
         if (!originalImage.src) {
-            alert('Please upload an image first.');
+            alert('Please upload an image or select a random cute dog first.');
             return;
         }
 
@@ -44,34 +50,34 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Create a copy of the original image for processing
         const imageCopy = new Image();
+        imageCopy.src = originalImage.src;
+
         imageCopy.onload = function () {
             drawImageOnCanvas(imageCopy);
-
-            // Apply the specified image processing algorithm (e.g., mirror effect)
-            applyMirrorEffect();
 
             // Apply brightness
             applyBrightness(brightness);
 
-            // Convert the modified image to JSON
-            const modifiedImageDataUrl = modifiedImage.src;
-            const modifiedImageJson = { dataUrl: modifiedImageDataUrl };
-
-            // Convert the JSON object to a string
-            const modifiedImageJsonString = JSON.stringify(modifiedImageJson);
-
-            // Display the modified image JSON in the console (you can send it to the server)
-            console.log('Modified Image JSON:', modifiedImageJsonString);
+            // Display the modified image in the second container
+            modifiedImageBox.style.display = 'block';
 
             // Record end time and calculate processing time
             const endTime = performance.now();
             const timeElapsed = endTime - startTime;
             displayProcessingTime(timeElapsed);
-
-            modifiedImageBox.style.display = 'block';
         };
+    }
 
-        imageCopy.src = originalImage.src;
+    async function displayRandomDog() {
+        const response = await fetch('https://dog.ceo/api/breeds/image/random');
+        const data = await response.json();
+
+        originalImage.src = data.message;
+        originalImageBox.style.display = 'block';
+
+        // Process the image with the current brightness value
+        const brightnessValue = brightnessSlider.value;
+        await processImage(brightnessValue);
     }
 
     function drawImageOnCanvas(image) {
@@ -81,11 +87,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const context = canvas.getContext('2d');
         context.drawImage(image, 0, 0, canvas.width, canvas.height);
         modifiedImage.src = canvas.toDataURL('image/jpeg');
-    }
-
-    function applyMirrorEffect() {
-        // Implement your mirror effect algorithm here
-        // For example, swap pixel values to create a mirror effect
     }
 
     function applyBrightness(brightness) {
