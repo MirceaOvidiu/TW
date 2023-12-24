@@ -7,23 +7,27 @@ document.addEventListener('DOMContentLoaded', function () {
     const submitBtn = document.getElementById('submitBtn');
     const originalImageBox = document.getElementById('originalImageBox');
     const modifiedImageBox = document.getElementById('modifiedImageBox');
-    const processingTime = document.getElementById('processingTime');
+
     const timeValue = document.getElementById('timeValue');
 
+    
     submitBtn.addEventListener('click', function () {
         // Reset the displayed processing time to 0
         timeValue.textContent = '0';
 
+        // Slider for brightness
         const brightnessValue = brightnessSlider.value;
         processImage(brightnessValue);
     });
 
+    /// The button that calls the API to get a random dog image when pressed
     randomDogButton.addEventListener('click', async function () {
         await displayRandomDog();
     });
 
     uploadInput.addEventListener('change', handleFileSelect);
 
+    /// Function to handle the file upload
     function handleFileSelect(event) {
         const file = event.target.files[0];
 
@@ -40,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    /// Function to process the image
     async function processImage(brightness) {
         if (!originalImage.src) {
             alert('Please upload an image or select a random cute dog first.');
@@ -53,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
         imageCopy.crossOrigin = "Anonymous"; // Enable cross-origin resource sharing
         imageCopy.src = originalImage.src;
 
+        // Draw the image on a canvas
         imageCopy.onload = function () {
             drawImageOnCanvas(imageCopy);
 
@@ -62,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Display the modified image in the second container
             modifiedImageBox.style.display = 'block';
 
-            // Record end time and calculate processing time
+            // Record end time and calculate processing time - the actual processing time, w/o delays
             const endTime = performance.now();
             const timeElapsed = endTime - startTime;
             displayProcessingTime(timeElapsed);
@@ -91,10 +97,17 @@ document.addEventListener('DOMContentLoaded', function () {
         modifiedImage.src = canvas.toDataURL('image/jpeg');
     }
 
+    ///The 1 second delay required
+    setTimeout(function() {
+        mirrorImage(context);
+        modifiedImage.src = canvas.toDataURL('image/jpeg');
+    }, 1000); // Delay of 1 second
+
     function mirrorImage(ctx) {
         const imageData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height);
         const newImageData = ctx.createImageData(imageData.width, imageData.height);
     
+        /// Mirroring the image
         for (let y = 0; y < imageData.height; y++) {
             for (let x = 0; x < imageData.width; x++) {
                 const index = (y * imageData.width + x) * 4;
@@ -109,6 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
         ctx.putImageData(newImageData, 0, 0);
     }
 
+    /// Function to apply brightness to the image
     function applyBrightness(brightness) {
         const canvas = document.createElement('canvas');
         canvas.width = modifiedImage.width;
@@ -145,6 +159,7 @@ document.addEventListener('DOMContentLoaded', function () {
         processSlice();
     }
 
+    /// Function to display the processing time
     function displayProcessingTime(timeElapsed) {
         timeValue.textContent = timeElapsed.toFixed(2);
     }
