@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const uploadInput = document.getElementById('uploadInput');
+    const randomDogButton = document.getElementById('random-dog-button');
     const originalImage = document.getElementById('originalImage');
     const modifiedImage = document.getElementById('modifiedImage');
     const brightnessSlider = document.getElementById('brightnessSlider');
@@ -8,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const modifiedImageBox = document.getElementById('modifiedImageBox');
     const processingTime = document.getElementById('processingTime');
     const timeValue = document.getElementById('timeValue');
-    const randomDogButton = document.getElementById('random-dog-button');
 
     submitBtn.addEventListener('click', function () {
         // Reset the displayed processing time to 0
@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Create a copy of the original image for processing
         const imageCopy = new Image();
+        imageCopy.crossOrigin = "Anonymous"; // Enable cross-origin resource sharing
         imageCopy.src = originalImage.src;
 
         imageCopy.onload = function () {
@@ -86,7 +87,26 @@ document.addEventListener('DOMContentLoaded', function () {
         canvas.height = image.height;
         const context = canvas.getContext('2d');
         context.drawImage(image, 0, 0, canvas.width, canvas.height);
+        mirrorImage(context);
         modifiedImage.src = canvas.toDataURL('image/jpeg');
+    }
+
+    function mirrorImage(ctx) {
+        const imageData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height);
+        const newImageData = ctx.createImageData(imageData.width, imageData.height);
+    
+        for (let y = 0; y < imageData.height; y++) {
+            for (let x = 0; x < imageData.width; x++) {
+                const index = (y * imageData.width + x) * 4;
+                const mirrorIndex = (y * imageData.width + (imageData.width - x - 1)) * 4;
+                newImageData.data[mirrorIndex] = imageData.data[index];
+                newImageData.data[mirrorIndex + 1] = imageData.data[index + 1];
+                newImageData.data[mirrorIndex + 2] = imageData.data[index + 2];
+                newImageData.data[mirrorIndex + 3] = imageData.data[index + 3];
+            }
+        }
+    
+        ctx.putImageData(newImageData, 0, 0);
     }
 
     function applyBrightness(brightness) {
@@ -95,19 +115,34 @@ document.addEventListener('DOMContentLoaded', function () {
         canvas.height = modifiedImage.height;
         const context = canvas.getContext('2d');
         context.drawImage(modifiedImage, 0, 0, canvas.width, canvas.height);
-
+    
         const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
         const data = imageData.data;
-
-        for (let i = 0; i < data.length; i += 4) {
-            // Adjust the brightness of each pixel
-            data[i] += parseInt(brightness);         // Red channel
-            data[i + 1] += parseInt(brightness);     // Green channel
-            data[i + 2] += parseInt(brightness);     // Blue channel
+    
+        const sliceSize = data.length / 4;
+        let currentSlice = 0;
+    
+        function processSlice() {
+            const start = currentSlice * sliceSize;
+            const end = Math.min(start + sliceSize, data.length);
+    
+            for (let i = start; i < end; i += 4) {
+                // Adjust the brightness of each pixel
+                data[i] += parseInt(brightness);         // Red channel
+                data[i + 1] += parseInt(brightness);     // Green channel
+                data[i + 2] += parseInt(brightness);     // Blue channel
+            }
+    
+            context.putImageData(imageData, 0, 0);
+            modifiedImage.src = canvas.toDataURL('image/jpeg');
+    
+            currentSlice++;
+            if (currentSlice < 4) {
+                setTimeout(processSlice, 1000);
+            }
         }
-
-        context.putImageData(imageData, 0, 0);
-        modifiedImage.src = canvas.toDataURL('image/jpeg');
+    
+        processSlice();
     }
 
     function displayProcessingTime(timeElapsed) {

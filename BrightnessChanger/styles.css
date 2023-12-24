@@ -83,6 +83,16 @@ button:hover {
 
 /* For Desktops and Tablets */
 @media only screen and (min-width: 768px) {
+    .image-container {
+        display: flex;
+        justify-content: space-between;
+    }
+    .image-box {
+        width: 45%; /* Reduced to account for any padding or margin */
+    }
+}
+
+@media only screen and (min-width: 768px) {
     .image-box {
         width: 50%;
     }
