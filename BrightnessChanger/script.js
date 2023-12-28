@@ -8,10 +8,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const originalImageBox = document.getElementById('originalImageBox');
     const modifiedImageBox = document.getElementById('modifiedImageBox');
     const downloadBtn = document.getElementById('downloadBtn');
-
     const timeValue = document.getElementById('timeValue');
-
-
+    // Attaching the download function to the button click event
+    downloadBtn.addEventListener('click', downloadModifiedImage);
     submitBtn.addEventListener('click', function () {
         // Reset the displayed processing time to 0, just in case
         timeValue.textContent = '0';
@@ -160,9 +159,15 @@ document.addEventListener('DOMContentLoaded', function () {
             let d = max - min;
             s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
             switch (max) {
-                case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-                case g: h = (b - r) / d + 2; break;
-                case b: h = (r - g) / d + 4; break;
+                case r:
+                    h = (g - b) / d + (g < b ? 6 : 0);
+                    break;
+                case g:
+                    h = (b - r) / d + 2;
+                    break;
+                case b:
+                    h = (r - g) / d + 4;
+                    break;
             }
             h /= 6;
         }
@@ -230,7 +235,4 @@ document.addEventListener('DOMContentLoaded', function () {
         link.download = 'modified_image.jpg'; // You can set the download filename here
         link.click();
     }
-
-    // Attaching the download function to the button click event
-    downloadBtn.addEventListener('click', downloadModifiedImage);
 });
