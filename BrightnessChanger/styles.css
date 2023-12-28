@@ -53,8 +53,8 @@ body {
 }
 
 #downloadBtn {
-    position: absolute;
-    bottom: 0px;
+    position: relative;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     margin-top: 50px;
