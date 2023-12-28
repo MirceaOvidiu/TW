@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Image Processing Application</title>
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        <div class="container">
-            <div class="upload-container">
-                <label for="uploadInput">Choose Photo:</label>
-                <input type="file" id="uploadInput" accept="image/*">
-                <button id="random-dog-button">Random Cute Dog</button>
-                <img id="dog-image" src style="display: none;" alt>
-            </div>
-            <div class="images-container">
-                <div class="image-box" id="originalImageBox">
-                    <p>Original Image</p>
-                    <img id="originalImage" alt="Original Image">
-                </div>
-                <div class="image-box" id="modifiedImageBox">
-                    <p>Modified Image</p>
-                    <img id="modifiedImage" alt="Modified Image">
-                    <p id="processingTime">Undelayed Processing Time: <span
-                            id="timeValue">0</span>
-                        ms</p>
-                </div>
-            </div>
-            <div class="canvas-container">
-                <label for="brightnessSlider">Brightness:</label>
-                <input type="range" id="brightnessSlider" min="0" max="200"
-                    value="100">
-                <button id="submitBtn">Apply Brightness</button>
-            </div>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brightness modifier application</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+<div class="container">
+    <div class="upload-container">
+        <label for="uploadInput">Choose Photo:</label>
+        <input type="file" id="uploadInput" accept="image/*">
+        <button id="random-dog-button">Random Cute Dog</button>
+        <img id="dog-image" src style="display: none;" alt>
+    </div>
+
+    <div class="canvas-container">
+        <label for="brightnessSlider">Brightness:</label>
+        <input type="range" id="brightnessSlider" min="0" max="100" value="100">
+        <button id="submitBtn">Apply Brightness</button>
+        <button id="downloadBtn">Download Modified Image</button>
+    </div>
+
+    <div class="images-container">
+        <div class="image-box" id="originalImageBox">
+            <p>Original Image</p>
+            <img id="originalImage" alt="Original Image">
         </div>
-        <script src="script.js" defer></script>
-    </body>
+        <div class="image-box" id="modifiedImageBox">
+            <p>Modified Image</p>
+            <img id="modifiedImage" alt="Modified Image">
+            <p id="processingTime">Undelayed Processing Time: <span id="timeValue">0</span> ms</p>
+        </div>
+    </div>
+</div>
+<script src="script.js" defer></script>
+</body>
+
 </html>

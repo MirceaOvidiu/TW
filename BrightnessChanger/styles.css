@@ -1,22 +1,30 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: url('bg.jpeg');
+    background-image: linear-gradient(to left, #541708, #1a0c01);
     margin: 0;
     background-position: center;
     background-repeat: repeat-y;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* Full viewport height */
 }
 
 .container {
-    max-width: 1200px; /* Adjust the max-width based on your design */
-    margin: 20px auto;
-    background-color: #fff;
+    max-width: 1200px;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
+
+.canvas-container,
 .upload-container {
     margin-bottom: 20px;
+    color: #fff;
+    font-size: 25px;
 }
 
 .images-container {
@@ -24,23 +32,51 @@ body {
     flex-wrap: wrap;
     justify-content: space-around;
     margin-bottom: 20px;
+    color: #fff;
+    font-size: 25px;
+
 }
 
-.image-box {
-    width: 48%;
-    text-align: center;
-    border: 1px solid #ccc;
+.image-box img {
+    width: 95%;
+    /* Scale to fit container width */
+    height: auto;
+    /* Maintain aspect ratio */
+    object-fit: contain;
     border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 20px;
+    /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* subtle shadow */
+    transition: all 0.3s ease;
+    color: #fff;
+    font-size: 25px;
+}
+
+#downloadBtn {
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 50px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#downloadBtn:hover {
+    background-color: #2980b9;
 }
 
 #originalImageBox {
-    background-color: #f9f9f9;
+    background-color: transparent
 }
 
 #modifiedImageBox {
-    background-color: #e6f7ff;
+    background-color: transparent;
 }
 
 #originalImage,
@@ -52,6 +88,7 @@ body {
 
 .canvas-container {
     position: relative;
+    color: #fff;
 }
 
 label {
@@ -83,26 +120,37 @@ button:hover {
 
 /* Media Queries */
 
-/* For Desktops and Tablets */
-@media only screen and (min-width: 768px) {
-    .image-container {
-        display: flex;
-        justify-content: space-between;
-    }
+/* Desktop */
+@media only screen and (min-width: 1024px) {
     .image-box {
-        width: 45%; /* Reduced to account for any padding or margin */
+        width: 500px;
+        /* Fixed width */
+        height: auto;
+        /* Maintain aspect ratio */
+        max-height: 500px;
+        /* Maximum height */
     }
 }
 
-@media only screen and (min-width: 768px) {
+/* Tablet */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
     .image-box {
-        width: 50%;
+        width: 600px;
+        height: auto;
+        max-height: 600px;
     }
 }
 
-/* For Mobile Devices */
+/* Mobile */
 @media only screen and (max-width: 767px) {
     .image-box {
         width: 100%;
+        /* Full width on small screens */
+        max-width: 600px;
+        /* Maximum width */
+        height: auto;
+        /* Maintain aspect ratio */
+        max-height: 600px;
+        /* Maximum height */
     }
 }
