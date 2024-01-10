@@ -14,7 +14,7 @@
         <label for="uploadInput">Choose Photo:</label>
         <input type="file" id="uploadInput" accept="image/*">
         <button id="random-dog-button">Random Cute Dog</button>
-        <img id="dog-image" src style="display: none;" alt>
+        <img id="dog-image" style="display: none;" alt src="">
     </div>
 
     <div class="canvas-container">
@@ -27,12 +27,12 @@
     <div class="images-container">
         <div class="image-box" id="originalImageBox">
             <p>Original Image</p>
-            <img id="originalImage" alt="Original Image">
+            <img id="originalImage" alt="Original Image" src="">
         </div>
         <div class="image-box" id="modifiedImageBox">
             <p>Modified Image</p>
-            <img id="modifiedImage" alt="Modified Image">
-            <p id="processingTime">Undelayed Processing Time: <span id="timeValue">0</span> ms</p>
+            <img id="modifiedImage" alt="Modified Image" src="">
+            <p id="processingTime">Actual Processing Time: <span id="timeValue">0</span> ms</p>
         </div>
     </div>
 </div>
